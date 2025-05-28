@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.io.IOException;
+
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
@@ -29,7 +31,7 @@ public class ProductController {
     }
 
     @PostMapping("/product/create")
-    public String createProduct(Product product) {
+    public String createProduct(Product product) throws IOException {
         productService.saveProduct(product);
         return "redirect:/";
     }
