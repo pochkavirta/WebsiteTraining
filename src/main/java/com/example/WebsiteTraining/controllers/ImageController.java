@@ -1,6 +1,5 @@
 package com.example.WebsiteTraining.controllers;
 
-
 import com.example.WebsiteTraining.models.Image;
 import com.example.WebsiteTraining.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
