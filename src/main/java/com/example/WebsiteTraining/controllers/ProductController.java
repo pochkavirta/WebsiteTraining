@@ -1,7 +1,7 @@
 package com.example.WebsiteTraining.controllers;
 
 import com.example.WebsiteTraining.models.Product;
-import com.example.WebsiteTraining.services.ProductService;
+import com.example.WebsiteTraining.services.impl.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,17 +16,17 @@ import java.io.IOException;
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
-    private final ProductService productService;
+    private final ProductServiceImpl productServiceImpl;
 
     @GetMapping("/")
     public String products(@RequestParam(name = "title", required = false) String title, Model model) {
-        model.addAttribute("products", productService.listProducts(title));
+        model.addAttribute("products", productServiceImpl.listProducts(title));
         return "products";
     }
 
     @GetMapping("/product/{id}")
     public String productInfo(@PathVariable Long id, Model model) {
-        Product product = productService.getProductById(id);
+        Product product = productServiceImpl.getProductById(id);
         model.addAttribute("product", product);
         model.addAttribute("images", product.getImages());
         return "product-info";
@@ -35,13 +35,13 @@ public class ProductController {
     @PostMapping("/product/create")
     public String createProduct(@RequestParam("file1") MultipartFile file1, @RequestParam("file2") MultipartFile file2,
                                 @RequestParam("file3") MultipartFile file3, Product product) throws IOException {
-        productService.saveProduct(product, file1, file2, file3);
+        productServiceImpl.saveProduct(product, file1, file2, file3);
         return "redirect:/";
     }
 
     @PostMapping("/product/delete/{id}")
     public String deleteProduct(@PathVariable Long id) {
-        productService.deleteProduct(id);
+        productServiceImpl.deleteProduct(id);
         return "redirect:/";
     }
 }
