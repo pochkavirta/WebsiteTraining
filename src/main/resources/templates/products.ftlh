@@ -12,25 +12,30 @@
             padding: 3rem 0;
             margin-bottom: 2rem;
         }
+
         .product-card {
             transition: transform 0.3s;
             margin-bottom: 1.5rem;
         }
+
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
+
         .search-box {
             background-color: #f8f9fa;
             padding: 2rem;
             border-radius: 10px;
             margin-bottom: 2rem;
         }
+
         .create-form {
             background-color: #f8f9fa;
             padding: 2rem;
             border-radius: 10px;
         }
+
         .footer {
             background-color: #343a40;
             color: white;
@@ -53,7 +58,8 @@
     <div class="search-box">
         <form action="/" method="get" class="row g-3">
             <div class="col-md-8">
-                <input type="text" name="title" class="form-control form-control-lg" placeholder="Поиск по названию объявления...">
+                <input type="text" name="title" class="form-control form-control-lg"
+                       placeholder="Поиск по названию объявления...">
             </div>
             <div class="col-md-4">
                 <button type="submit" class="btn btn-primary btn-lg w-100">Найти товары</button>
@@ -67,7 +73,8 @@
             <div class="col-md-4">
                 <div class="card product-card h-100">
                     <#if product.images?has_content>
-                        <img src="/images/${product.images[0].id}" class="card-img-top" alt="${product.title}" style="height: 200px; object-fit: cover;">
+                        <img src="/images/${product.images[0].id}" class="card-img-top" alt="${product.title}"
+                             style="height: 200px; object-fit: cover;">
                     <#else>
                         <div class="bg-secondary text-white text-center p-5" style="height: 200px;">
                             Нет изображения
@@ -141,7 +148,7 @@
 <!-- Подвал сайта -->
 <footer class="footer text-center">
     <div class="container">
-        <p class="mb-0">© 2023 ALEXEY MARKET. Все права защищены.</p>
+        <p class="mb-0">© 2025 ALEXEY MARKET. Все права защищены.</p>
     </div>
 </footer>
 

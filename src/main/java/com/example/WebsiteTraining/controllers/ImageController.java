@@ -1,6 +1,5 @@
 package com.example.WebsiteTraining.controllers;
 
-import com.example.WebsiteTraining.models.Image;
 import com.example.WebsiteTraining.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.InputStreamResource;
@@ -18,13 +17,13 @@ public class ImageController {
     private final ImageRepository imageRepository;
 
     @GetMapping("/images/{id}")
-    private ResponseEntity<?> getImageById(@PathVariable long id) {
-        Image image = imageRepository.findById(id).orElse(null);
-        assert image != null;
-        return ResponseEntity.ok()
-                .header("fileName", image.getOriginalFileName())
-                .contentType(MediaType.valueOf(image.getContentType()))
-                .contentLength(image.getSize())
-                .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes())));
+    public ResponseEntity<?> getImageById(@PathVariable long id) {
+        return imageRepository.findById(id)
+                .map(image -> ResponseEntity.ok()
+                        .header("fileName", image.getOriginalFileName())
+                        .contentType(MediaType.valueOf(image.getContentType()))
+                        .contentLength(image.getSize())
+                        .body(new InputStreamResource(new ByteArrayInputStream(image.getBytes()))))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 }

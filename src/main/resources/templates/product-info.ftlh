@@ -123,7 +123,7 @@
 <!-- Подвал -->
 <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
-        <p class="mb-0">© 2023 ALEXEY MARKET. Все права защищены.</p>
+        <p class="mb-0">© 2025 ALEXEY MARKET. Все права защищены.</p>
     </div>
 </footer>
 
