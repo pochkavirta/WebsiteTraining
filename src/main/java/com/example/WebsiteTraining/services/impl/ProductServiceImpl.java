@@ -18,6 +18,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
 
+    @Override
     public List<Product> listProducts(String title) {
         if (title != null) {
             return productRepository.findByTitle(title);
@@ -25,6 +26,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
+    @Override
     public void saveProduct(Product product, MultipartFile file1, MultipartFile file2, MultipartFile file3) throws IOException {
         // Проверка на null продукта
         if (product == null) {
@@ -66,10 +68,12 @@ public class ProductServiceImpl implements ProductService {
         return image;
     }
 
+    @Override
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
 
+    @Override
     public Product getProductById(Long id) {
         return productRepository.findById(id).orElse(null);
     }
